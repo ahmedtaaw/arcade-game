@@ -41,6 +41,6 @@ document.addEventListener('keyup', function(e) {
         39: 'right',
         40: 'down'
     };
-
+    console.log(e.keyCode);
     player.handleInput(allowedKeys[e.keyCode]);
 });
