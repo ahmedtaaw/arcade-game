@@ -6,14 +6,16 @@ var stepX=0;
 var stepY=0;
 
 var canvas = document.getElementById('board');
+canvas.width = 600;
+canvas.height = 600;
 var ctx = canvas.getContext('2d');
 
 	 // Draw shapes
      var img = new Image();
-     img.src = 'char-horn-girl.png';
+     img.src = 'images/char-horn-girl.png';
 
      var img2 = new Image();
-	 img2.src = 'Rock.png';
+	 img2.src = 'images/Rock.png';
 	 
 //to display something, a script first needs to access the rendering context and draw on it.
 if(canvas.getContext){
@@ -52,7 +54,7 @@ function moveshape(e){
 	} else if(e==40){
 		movedown();
 	}
-	ctx.drawImage(img2,50,50);
+	
 }
 
 function moveright(){
@@ -83,9 +85,13 @@ function moveup(){
 //randome speed //steps
 var enemyElementsPositionsY=[]
 
-var y = Math.floor((Math.random() * 600));
-	ctx.drawImage(img2,0,y);+
+var y = Math.floor((Math.random() * canvas.height));
+var x=0;
 setInterval(function(){ 
+	x+=1;
+	ctx.clearRect(0, 0, canvas.width,canvas.height);
 	
+	ctx.drawImage(img2,x,y);
+	ctx.drawImage(img,startpositionX,startpositionY);
 
- }, 500);
+ },20);
