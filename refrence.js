@@ -61,24 +61,28 @@ function moveright(){
 	stepX+=1;
 	startpositionX=startpositionX+(shapewidth/2);
 	ctx.drawImage(img,startpositionX,startpositionY);
+	ctx.drawImage(img2,x,y);
 }
 
 function moveleft(){
 	stepX-=1;
 	startpositionX=startpositionX-(shapewidth/2);
 	ctx.drawImage(img,startpositionX,startpositionY);
+	ctx.drawImage(img2,x,y);
 }
 
 function movedown(){
 	stepY+=1;
 	startpositionY=startpositionY+(shapeheight/2);
 	ctx.drawImage(img,startpositionX,startpositionY);
+	ctx.drawImage(img2,x,y);
 }
 
 function moveup(){
 	stepY-=1;
 	startpositionY=startpositionY-(shapeheight/2);
 	ctx.drawImage(img,startpositionX,startpositionY);
+	ctx.drawImage(img2,x,y);
 }
 
 
