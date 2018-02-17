@@ -19,7 +19,7 @@ Enemy.prototype.update = function(dt) {
     // all computers.
     //console.log("Enemy update");
     if(this.x<505){
-    this.x+=this.speed*dt;
+        this.x+=this.speed*dt;
     }else{
         this.x=-50;
     }
@@ -30,9 +30,15 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 Enemy.prototype.iscollide = function(){
-    if(this.y==player.y){
-        console.log("collide");
-    }
+
+        //console.log("this.x",this.x);
+       //console.log("player.x",player.x);
+        if((this.x>player.x-80 && this.x<player.x+60)&&(this.y<player.y && this.y>player.y-50)){
+            console.log("collide");
+            player.y=101*4;
+        }
+       
+  
 }
 // Now write your own player class
 // This class requires an update(), render() and
@@ -65,7 +71,11 @@ ownplayer.prototype.handleInput=function(e){
 	} else if(e=="up"){
 		this.y-=85;
     }
-    console.log(this.x);
+    console.log(this.y);
+    if(this.y==-106){
+        this.y=101*4;
+    }
+    
 }
 
 // Now instantiate your objects.
