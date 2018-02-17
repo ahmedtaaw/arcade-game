@@ -1,11 +1,14 @@
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(x,y,speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
+    this.x=x;
+    this.y=y;
+    this.speed=speed;
 };
 
 // Update the enemy's position, required method for game
@@ -14,6 +17,8 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    //console.log("Enemy update");
+    this.x+=this.speed*dt;
 };
 
 // Draw the enemy on the screen, required method for game
@@ -24,20 +29,50 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var ownplayer = function(){};
+var ownplayer = function(x,y){
+   
+    this.sprite = 'images/char-boy.png';
+    this.width=101;
+    this.height=171;
+    this.x=x;
+    this.y=y;
+};
 ownplayer.prototype.update=function(){
-    console.log("player update");
+    //console.log("player update");
 }
 ownplayer.prototype.render=function(){
-    console.log("player render");
+    //console.log("player render");
+    ctx.drawImage(Resources.get(this.sprite),this.x,this.y);
 }
-ownplayer.prototype.handleInput=function(){
+ownplayer.prototype.handleInput=function(e){
     console.log("player handleInput");
+    //console.log(this.x);
+    //console.log(e);
+    if(e=="right"){
+		this.x+=100;
+	} else if(e=="left"){
+		this.x-=100;
+	} else if(e=="down"){
+		this.y+=85;
+	} else if(e=="up"){
+		this.y-=85;
+    }
+    console.log(this.x);
 }
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
+var allEnemies = new Array();
+var newenemy = new Enemy(0,60,50);
+var newenemy2 = new Enemy(0,145,40);
+var newenemy3 = new Enemy(0,230,25);
+
+allEnemies.push(newenemy);
+allEnemies.push(newenemy2);
+allEnemies.push(newenemy3);
+//console.log(allEnemies)
 // Place the player object in a variable called player
+var player = new ownplayer(202,101*4);
 
 
 
@@ -50,6 +85,7 @@ document.addEventListener('keyup', function(e) {
         39: 'right',
         40: 'down'
     };
-    console.log(e.keyCode);
+    //console.log(e.keyCode);
     player.handleInput(allowedKeys[e.keyCode]);
 });
+

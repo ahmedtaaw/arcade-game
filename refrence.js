@@ -61,7 +61,7 @@ function moveright(){
 	stepX+=1;
 	startpositionX=startpositionX+(shapewidth/2);
 	ctx.drawImage(img,startpositionX,startpositionY);
-	ctx.drawImage(img2,x,y);
+	ctx.drawImage(imyg2,x,y);
 }
 
 function moveleft(){
