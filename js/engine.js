@@ -51,7 +51,6 @@ var Engine = (function(global) {
         update(dt);
         //console.log("$$$$$$$$$$$$$$$$");
         render();
-
         /* Set our lastTime variable which is used to determine the time delta
          * for the next time this function is called.
          */
@@ -97,8 +96,10 @@ var Engine = (function(global) {
     function updateEntities(dt) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
+            enemy.iscollide();
         });
         player.update();
+        
     }
 
     /* This function initially draws the "game level", it will then call

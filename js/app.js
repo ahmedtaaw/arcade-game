@@ -18,14 +18,22 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     //console.log("Enemy update");
+    if(this.x<505){
     this.x+=this.speed*dt;
+    }else{
+        this.x=-50;
+    }
 };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-
+Enemy.prototype.iscollide = function(){
+    if(this.y==player.y){
+        console.log("collide");
+    }
+}
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
@@ -63,9 +71,9 @@ ownplayer.prototype.handleInput=function(e){
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 var allEnemies = new Array();
-var newenemy = new Enemy(0,60,50);
-var newenemy2 = new Enemy(0,145,40);
-var newenemy3 = new Enemy(0,230,25);
+var newenemy = new Enemy(0,60,Math.floor(Math.random() * 50) + 10);
+var newenemy2 = new Enemy(0,145,Math.floor(Math.random() * 50) + 10);
+var newenemy3 = new Enemy(0,230,Math.floor(Math.random() * 50) + 10);
 
 allEnemies.push(newenemy);
 allEnemies.push(newenemy2);
