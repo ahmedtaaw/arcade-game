@@ -59,19 +59,25 @@ ownplayer.prototype.render=function(){
     ctx.drawImage(Resources.get(this.sprite),this.x,this.y);
 }
 ownplayer.prototype.handleInput=function(e){
-    console.log("player handleInput");
+    //console.log("player handleInput");
     //console.log(this.x);
     //console.log(e);
     if(e=="right"){
-		this.x+=100;
+        if (this.x<402){
+        this.x+=100;
+        }
 	} else if(e=="left"){
-		this.x-=100;
+        if (this.x>2){
+        this.x-=100;
+        }
 	} else if(e=="down"){
-		this.y+=85;
+        if (this.y<404){
+        this.y+=85;
+        }
 	} else if(e=="up"){
 		this.y-=85;
     }
-    console.log(this.y);
+    //console.log(this.y);
     if(this.y==-106){
         this.y=101*4;
     }
